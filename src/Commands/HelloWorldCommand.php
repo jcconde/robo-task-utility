@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @copyright 2025 Onetree. All rights reserved.
  * @author    Juanca <juancarlosc@onetree.com>
@@ -19,6 +20,7 @@ class HelloWorldCommand extends Tasks
     /**
      * @param ConsoleIO $io
      * @return void
+     * @command hello
      */
     public function hello(ConsoleIO $io): void
     {
