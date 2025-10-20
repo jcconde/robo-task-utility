@@ -19,7 +19,7 @@ repos:
       - id: phpcs
         name: PHP CodeSniffer
         files: \.(php)$
-        entry: bash -c 'vendor/bin/phpcs --standard=PSR12,Magento2 --colors -p "$@"' --
+        entry: bash -c 'vendor/bin/phpcs --standard=PSR12 --colors -p "$@"' --
         language: system
         types: [ php ]
   - repo: local
@@ -27,7 +27,7 @@ repos:
       - id: phpmd
         name: PHP Mess Detector
         files: \.(php)$
-        entry: bash -c 'vendor/bin/phpmd "$@" text cleancode,codesize,controversial,design,naming,unusedcode' --
+        entry: bash -c 'vendor/bin/phpmd "$@" text phpmd.xml' --
         language: system
         types: [ php ]
   - repo: local

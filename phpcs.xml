@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+  ~ @copyright 2025 Onetree. All rights reserved.
+  ~ @author    Juanca <juancarlosc@onetree.com>
+  -->
+
+<ruleset name="MyRuleset">
+    <description>Coding standard based on internal Onetree coding practices.</description>
+    <rule ref="PSR12.Properties.ConstantVisibility">
+        <exclude name="PSR12.Properties.ConstantVisibility"/>
+    </rule>
+</ruleset>
