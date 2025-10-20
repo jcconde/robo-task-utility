@@ -1,0 +1,40 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1  # Use the sha / tag you want to point at
+    hooks:
+      - id: check-xml
+      - id: check-merge-conflict
+
+  - repo: local
+    hooks:
+      - id: php-cs-fixer
+        name: php-cs-fixer
+        files: \.(php)$
+        entry: bash -c 'vendor/bin/php-cs-fixer fix --using-cache=yes --config=.php-cs-fixer.dist.php --dry-run --diff "$@"' --
+        language: system
+        types: [ php ]
+
+  - repo: local
+    hooks:
+      - id: phpcs
+        name: PHP CodeSniffer
+        files: \.(php)$
+        entry: bash -c 'vendor/bin/phpcs --standard=PSR12,Magento2 --colors -p "$@"' --
+        language: system
+        types: [ php ]
+  - repo: local
+    hooks:
+      - id: phpmd
+        name: PHP Mess Detector
+        files: \.(php)$
+        entry: bash -c 'vendor/bin/phpmd "$@" text cleancode,codesize,controversial,design,naming,unusedcode' --
+        language: system
+        types: [ php ]
+  - repo: local
+    hooks:
+      - id: phpstan
+        name: PHP Stan
+        files: \.(php)$
+        entry: bash -c 'vendor/bin/phpstan analyse --level=6 --no-progress --memory-limit=512M "$@"' --
+        language: system
+        types: [ php ]
