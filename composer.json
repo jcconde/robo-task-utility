@@ -1,0 +1,27 @@
+{
+    "name": "juancarlosc/robo-task-utility",
+    "description": "Command line utiliy",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Juanca\\RoboTaskUtility\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juanca",
+            "email": "juancarlosc@onetree.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "consolidation/robo": "^5.1"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^4.0",
+        "phpmd/phpmd": "^2.15",
+        "phpstan/phpstan": "^2.1",
+        "friendsofphp/php-cs-fixer": "^3.89",
+        "phpunit/phpunit": "^12.4"
+    }
+}
