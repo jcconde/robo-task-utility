@@ -1,0 +1,12 @@
+project:
+  name: "Juanca Tools"
+  version: "0.1.0"
+  author: "Juanca"
+
+paths:
+  src: "src"
+
+# Variables de entorno
+env:
+  mode: "development"
+  debug: true
