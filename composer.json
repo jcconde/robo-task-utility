@@ -1,5 +1,5 @@
 {
-    "name": "juancarlosc/robo-task-utility",
+    "name": "jcconde/robo-task-utility",
     "description": "Command line utiliy",
     "type": "library",
     "autoload": {
