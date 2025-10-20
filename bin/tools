@@ -32,10 +32,28 @@ $commandClasses = $discovery->discover($commandsPath, '\Juanca\RoboTaskUtility\C
 
 // Define our Runner, and pass it the command classes we provide.
 $runner = new \Robo\Runner($commandClasses);
-$runner
-    ->setSelfUpdateRepository($selfUpdateRepository)
-    ->setConfigurationFilename($configurationFilename)
-    ->setClassLoader($classLoader);
+$runner->setSelfUpdateRepository($selfUpdateRepository)
+        ->setConfigurationFilename($configurationFilename)
+        ->setClassLoader($classLoader);
+
+// Create logger
+$logDir = realpath(__DIR__ . '/../var/log');
+if ($logDir === false) {
+    $logDir = __DIR__ . '/../var/log';
+    if (!is_dir($logDir)) {
+        mkdir($logDir, 0777, true);
+    }
+}
+$logPath = $logDir . '/system.log';
+if (!file_exists($logPath)) {
+    touch($logPath);
+}
+
+$logger = new \Monolog\Logger('robo');
+$logger->pushHandler(new \Monolog\Handler\StreamHandler($logPath, \Monolog\Level::Debug));
+
+$container = $runner->getContainer();
+$container->add('logger', $logger);
 
 // Execute the command and return the result.
 $output = new \Symfony\Component\Console\Output\ConsoleOutput();

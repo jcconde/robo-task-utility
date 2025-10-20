@@ -13,3 +13,4 @@
 phpunit.xml
 
 .php-cs-fixer.cache
+/var/**
