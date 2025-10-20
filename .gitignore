@@ -11,3 +11,5 @@
 .phpunit.result.cache
 .DS_Store
 phpunit.xml
+
+.php-cs-fixer.cache
