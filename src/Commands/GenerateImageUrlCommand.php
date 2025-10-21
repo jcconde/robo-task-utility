@@ -17,13 +17,13 @@ use Robo\Tasks;
 class GenerateImageUrlCommand extends Tasks
 {
     /**
-     * @param array<int, string> $args
      * @param array<string, mixed> $opts
      * @return void
+     * @command generate:image-url
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
      */
-    public function generate(array $args, $opts = ['category' => '', 'limit' => 2]): void
+    public function generate(array $opts = ['category' => '', 'limit' => 2]): void
     {
         $logger = $this->getContainer()->get('logger');
         $config = $this->getContainer()->get('config');
