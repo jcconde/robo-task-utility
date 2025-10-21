@@ -6,6 +6,9 @@ project:
 paths:
   src: "src"
 
+pexels:
+  api_key: ""
+
 # Variables de entorno
 env:
   mode: "development"
