@@ -38,12 +38,11 @@ class GenerateImageUrlCommand extends Tasks
         $results = [];
         foreach ($categories as $category) {
             $this->say(sprintf('Generating images for category: %s', $category));
-            $results[] = $generator->generate($category, $limit);
-            $this->say("executed");
+            $results = $generator->generate($category, $limit);
         }
 
         array_walk($results, function ($result) {
-            $this->say(reset($result));
+            $this->say($result);
         });
     }
 
