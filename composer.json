@@ -1,6 +1,6 @@
 {
-    "name": "jcconde/robo-task-utility",
-    "description": "Command line utiliy",
+    "name": "juancarlosc/robo-task-utility",
+    "description": "Command line utility",
     "type": "library",
     "autoload": {
         "psr-4": {
@@ -16,7 +16,11 @@
     "require": {
         "php": "^8.3",
         "consolidation/robo": "^5.1",
-        "monolog/monolog": "^3.9"
+        "monolog/monolog": "^3.9",
+        "guzzlehttp/guzzle": "^7.10",
+        "symfony/dom-crawler": "^7.3",
+        "symfony/css-selector": "^7.3",
+        "webeweb/pexels-library": "^3.9"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^4.0",
