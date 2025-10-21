@@ -17,7 +17,7 @@ use Robo\Tasks;
 class GenerateImageUrlCommand extends Tasks
 {
     /**
-     * @param array<string, mixed> $opts
+     * @param array $opts
      * @return void
      * @command generate:image-url
      * @throws \Psr\Container\ContainerExceptionInterface
