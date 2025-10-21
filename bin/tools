@@ -2,6 +2,7 @@
 <?php
 
 // If we're running from phar load the phar autoload file.
+
 $pharPath = \Phar::running(true);
 if ($pharPath) {
     $autoloaderPath = "$pharPath/vendor/autoload.php";
@@ -18,44 +19,9 @@ if ($pharPath) {
 }
 $classLoader = require $autoloaderPath;
 
-// Customization variables
-$appName = "Juanca Toos";
-$appVersion = trim(file_get_contents(__DIR__ . '/../VERSION'));
-$selfUpdateRepository = 'jcconde/robo-task-utility';
-$configurationFilename = 'src/etc/config.yml';
-
-// Discover commands
-$discovery = new \Consolidation\AnnotatedCommand\CommandFileDiscovery();
-$discovery->setSearchPattern('*Command.php');
-$commandsPath = __DIR__ . '/../src/Commands';
-$commandClasses = $discovery->discover($commandsPath, '\Juanca\RoboTaskUtility\Commands');
-
-// Define our Runner, and pass it the command classes we provide.
-$runner = new \Robo\Runner($commandClasses);
-$runner->setSelfUpdateRepository($selfUpdateRepository)
-        ->setConfigurationFilename($configurationFilename)
-        ->setClassLoader($classLoader);
-
-// Create logger
-$logDir = realpath(__DIR__ . '/../var/log');
-if ($logDir === false) {
-    $logDir = __DIR__ . '/../var/log';
-    if (!is_dir($logDir)) {
-        mkdir($logDir, 0777, true);
-    }
-}
-$logPath = $logDir . '/system.log';
-if (!file_exists($logPath)) {
-    touch($logPath);
-}
-
-$logger = new \Monolog\Logger('robo');
-$logger->pushHandler(new \Monolog\Handler\StreamHandler($logPath, \Monolog\Level::Debug));
-
-$container = $runner->getContainer();
-$container->add('logger', $logger);
-
-// Execute the command and return the result.
+$input = new \Symfony\Component\Console\Input\ArgvInput($argv);
 $output = new \Symfony\Component\Console\Output\ConsoleOutput();
-$statusCode = $runner->execute($argv, $appName, $appVersion, $output);
-exit($statusCode);
+
+$app = new \Juanca\RoboTaskUtility\MyApplication($classLoader);
+$status_code = $app->run($input, $output);
+exit($status_code);
